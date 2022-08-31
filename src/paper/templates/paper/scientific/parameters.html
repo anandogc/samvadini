@@ -1,0 +1,36 @@
+{% extends 'paper/base.html' %}
+{% load static %}
+
+{% block sections %}
+    <nav class="flex-container">
+        {% for pad in pads %}
+        <div>
+            <div class="ttu f4 gray pa2 pointer section">{{ pad.title }}</div>
+            {% for project in pad.projects %}
+                <div class="ml2 f5 black pa2 pointer section">{{ project.title }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}    
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <main class="paper mw8 bg-white ml-auto mr-auto h-100 bl br flex">
+          <div class="w-50">
+            <div class="bg-near-white tc pa2">Pane 1</div>
+            <div class="configuration w-90 ml-auto mr-auto pt4">
+                <span>Title</span>
+                <input type="text" name="title">                   
+
+                <span>Author(s)</span>
+                <textarea name="authors"></textarea>
+
+                <span>Affilition(s)</span>
+                <textarea name="affilitionsx "></textarea>
+            </div>
+          </div>
+          <div class="bl w-50">
+            <div class="bg-near-white tc pa2">Pane 2</div>
+          </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,40 @@
+	<select class="ba b--gray bg-near-white ph3 pv2 mb2 dib mid-gray mh2" onclick="Section_set(event)">
+		<option>Text</option>
+		<optgroup label="Set">		
+			<option>Section</option>
+			<option>Sub Section</option>
+			<option>Sub Sub Section</option>
+			<option>Sub Sub Sub Section</option>
+		</optgroup>
+	</select>
+	<a class="f5 bg-near-white link dim ba ph3 pv2 mb2 dib mid-gray mh2" href="#0" onclick="Insert_equation()">Equation</a>
+	<a class="f5 bg-near-white link dim ba ph3 pv2 mb2 dib mid-gray mh2" href="#0">Table</a>
+	<a class="f5 bg-near-white link dim ba ph3 pv2 mb2 dib mid-gray mh2" href="#0">Algorithm</a>
+	<a class="f5 bg-near-white link dim ba ph3 pv2 mb2 dib mid-gray mh2" href="#0">References</a>
+
+	<script type="text/javascript">
+		function Section_set(event) {
+			if (event.target.value == "Text") {
+				quill.format("header", 0);
+			}
+			if (event.target.value == "Section") {
+				quill.format("header", 2);
+			}
+			if (event.target.value == "Sub Section") {
+				quill.format("header", 3);
+			}
+			if (event.target.value == "Sub Sub Section") {
+				quill.format("header", 4);
+			}
+			if (event.target.value == "Sub Sub Sub Section") {
+				quill.format("header", 5);
+			}
+
+			return true;
+		}
+
+		function Insert_equation() {
+			quill.format('equation', '-')
+			return true
+		}
+	</script>

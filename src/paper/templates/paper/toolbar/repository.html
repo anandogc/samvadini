@@ -1,0 +1,38 @@
+            <div class="tabs w-100 center mt2 flex" style="flex-grow: 1;">
+                <div class="tabs__menu ba bg-near-white  w2  mb3 bb b--black-20">
+                    <label for="images-container" class="tabs__menu-item db tc bg-white pv2 bg-animate hover-bg-white pointer dark-blue">
+                        Fig
+                    </label>
+                    <label for="reference-container" class="tabs__menu-item db tc pv2 bg-animate hover-bg-white pointer">
+                        Ref
+                    </label>
+                </div>
+                <div class="tabs__content ma1 w5 relative">
+                    <div class="absolute w-100 h-100 scroll-y">
+                        <input type="radio" class="dn" name="sections" id="images-container" checked>
+                        <div class="tabs__content__info tc">
+                            <label for="id_image" class="f5 bg-near-white dim ba pv2 ph3 mb2 dib mid-gray mh1">Add</label>
+
+                            <progress id="progress-box" value="0.0" class="dn w-80"></progress>
+                            <div id="progress-value" class="dn tc"></div>
+                            <div id="cancel-box" class="dn">
+                                <button id="cancel-btn">Cancel</button>
+                            </div>
+                            <div class="pa1 pa1-ns">
+                                <ul class="list pl0 measure center" id="file_list">
+                                </ul>
+                            </div>
+                            <form action="/paper/upload_image" id="upload-image" class="dn">
+                                {% csrf_token %}
+                                {{ imageform.as_p }}
+                            </form> 
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" class="dn" name="sections" id="reference-container">
+                        <div class="tabs__content__info">
+                            References
+                        </div>
+                    </div>
+                </div>
+            </div>

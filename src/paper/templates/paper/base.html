@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paper</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'paper/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'paper/css/scientific.css' %}">
+
+    {% block styles %}
+    {% endblock %}
+
+    <style type="text/css">
+        /*Hide info of no checked inputs*/
+        .tabs__content input:not(:checked) ~ .tabs__content__info {
+            display: none;
+        }
+        /* Files */
+
+        .file-thumbnail {
+            max-width: 2em;
+            max-height: 2em;
+            /*padding-right: 1em;*/
+        }
+
+        .file-label {
+            white-space: nowrap;
+            width: 12em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        #file_list input[type="radio"]:checked+label {
+            border-left: 2px solid;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="logo pa4 f3">Paper</div>
+        <div class="cells pa3 tc flex-center">
+            {% block cells %}
+            {% endblock %}
+        </div>
+        <div class="property flex-center">
+            {% block property %}
+                <a class="f5 bg-near-white link dim ba ph3 pv2 mb2 dib mid-gray mh2" onclick="save_notebook()">Save</a>
+            {% endblock %}
+        </div>
+        <nav class="projects">
+            {% block sections %}
+            {% endblock %}
+        </nav>
+        <div class="main">
+            {% block main %}
+                <main class="paper mw8 bg-white ml-auto mr-auto h-100 bl br">
+                </main>
+            {% endblock %}
+        </div>
+        <div class="tools flex flex-column">
+            {% block tools %}
+            {% endblock %}
+        </div>
+    <script type="text/javascript">
+    function save_notebook() {
+        const csrf = document.getElementsByName('csrfmiddlewaretoken')
+
+        const fd = new FormData()
+        fd.append('csrfmiddlewaretoken', csrf[0].value)
+        fd.append('id', project_id)
+        fd.append('content', JSON.stringify(quill.getContents()))
+
+        $.ajax({
+            type:'POST',
+            url: "/scientific/save",
+            enctype: 'text/plain',
+            data: fd,
+            success: function(response){
+                alert("saved")
+            },
+            error: function(error){
+                console.log(error)
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+        })
+    }
+    </script>
+{% block script %}
+{% endblock %}
+</body>
+</html>

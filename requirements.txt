@@ -1,0 +1,8 @@
+django
+pillow
+
+jsonrpcclient
+requests
+
+psycopg2
+graphene-django

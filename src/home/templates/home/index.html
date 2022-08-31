@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Samvadini</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">
+
+	<style type="text/css">
+	    .flex-container {
+	      display: flex;
+	      height: 100%;
+	      flex-direction: column;
+	      justify-content: space-between;
+	    }
+	</style>
+</head>
+<body>
+<div class="grid">
+	<div class="logo pa4 f3">Samvadini</div>
+	<div class="cells">
+		{% block cells %}
+		{% endblock %}
+	</div>
+	<div class="sections">
+		<nav class="flex-container">
+		    <div class="f4 dark-gray pa4 pointer">Introduction</div>
+		</nav>
+	</div>
+	<div class="main">
+		<main class="paper mw8 bg-white ml-auto mr-auto h-100 bl br">
+			<p class="mt0 pa2 f4">At Samvadini, we devellop typing tools for scientific, prose and poetry writing. These tools support multilingual typing and editing.<br>
+				<br>
+				Visit: <i>Paper</i> for<br>
+				<br>
+				<a href="/paper/scientific/4" class="blue no-underline">Scientific</a> document<br>
+				<a href="/paper/prose" class="blue no-underline">Prose</a>, or<br>
+				<a href="/paper/poetry" class="blue no-underline">Poetry</a>
+				document<br>
+			</p>
+		</main>
+	</div>
+</div>
+</body>
+</html>

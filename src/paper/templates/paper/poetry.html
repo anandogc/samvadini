@@ -1,0 +1,20 @@
+{% extends 'paper/base.html' %}
+{% load static %}
+
+{% block main %}
+<main class="paper mw8 bg-white ml-auto mr-auto h-100 bl br">
+	<div id="editor">
+		<sm-dwadashakshar data-type="1" contenteditable="true"></sm-dwadashakshar>
+	</div>
+</main>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static '/paper/css/poetry.css' %}">
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+	customElements.define('sm-dwadashakshar', HTMLElement);
+</script>
+{% endblock %}

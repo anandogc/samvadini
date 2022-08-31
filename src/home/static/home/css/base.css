@@ -1,0 +1,42 @@
+		html,body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
+
+		.grid {
+			display: grid;
+			width: 100%;
+			height: 100%;
+			grid-template-areas: 'logo cells'
+			                     'sections main';
+			grid-template-rows: min-content;
+			grid-template-columns: 15em auto;
+			background: beige;
+		}
+
+		.logo {
+			/*font-size: 1.2em;*/
+			color: darkred;
+			grid-area: logo;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+			background: rgb(250,237,237);
+			background: linear-gradient(180deg, rgba(250,250,237,1) 0%, rgba(204,160,0,1) 100%);
+		}
+
+		.cells {
+			grid-area: cells;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+			background: rgb(250,237,237);
+			background: linear-gradient(180deg, rgba(250,250,237,1) 0%, rgba(204,160,0,1) 100%);
+		}
+
+		.sections {
+			grid-area: sections;
+			border: 1px solid;
+		}
+
+		.main {
+			grid-area: main;
+			border: 1px solid;
+		}
