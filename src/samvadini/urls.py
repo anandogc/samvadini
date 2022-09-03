@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('scientific/', include('paper.urls')),
+    path('scientific/', include('scientific.urls')),
     path('graphql', csrf_exempt(GraphQLView.as_view())),
 ]
 

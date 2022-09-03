@@ -1,8 +1,13 @@
 django
 pillow
 
+# For login using google account
+google-api-python-client
+
+# For calling functions in swar
 jsonrpcclient
 requests
 
+# GraphQL API used by swar to access samvadini
 psycopg2
 graphene-django

@@ -47,8 +47,9 @@ INSTALLED_APPS = [
     'graphene_django',
 
     # own app
+    # 'authentication.apps.AuthenticationConfig',
     'home.apps.HomeConfig',
-    'paper.apps.PaperConfig',
+    'scientific.apps.ScientificConfig',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'home.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -112,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'paper.schema.schema'
+    'SCHEMA': 'scientific.schema.schema'
 }
 
 # Internationalization

@@ -4,44 +4,69 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Samvadini</title>
+	<title>Lekhan</title>
 
 	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">
 
 	<style type="text/css">
-	    .flex-container {
-	      display: flex;
-	      height: 100%;
-	      flex-direction: column;
-	      justify-content: space-between;
-	    }
+		.flex-container {
+		  display: flex;
+		  height: 100%;
+		  flex-direction: column;
+		  justify-content: space-between;
+		}
 	</style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js" integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
 </head>
 <body>
 <div class="grid">
-	<div class="logo pa4 f3">Samvadini</div>
+	<div class="navigation mr2 flex justify-between">
+        <div class="f5 pa1 mid-gray"></div>
+        <nav>
+        	{% if user.is_authenticated %}
+	            <a href="/profile" class="f5 ph2 pv1 link dib black mid-gray" label="Edit Profile">{{ user.first_name }} {{ user.last_name }}</a>
+	            <a href="/signout" class="f5 ph2 pv1 link dib black mid-gray">Sign Out</a>
+	        {% else %}
+			<a href="/signup" class="f5 ph2 pv1 link dib black mid-gray">Sign Up</a>
+        	<a href="/signin" class="=f5 ph2 pv1 link dib black mid-gray">Sign In</a>
+	  		{% endif %}
+        </nav>
+    </div>
+	<div class="logo pa4 f3">\(\mathcal{Lekhan}\)</div>
 	<div class="cells">
 		{% block cells %}
 		{% endblock %}
 	</div>
 	<div class="sections">
-		<nav class="flex-container">
-		    <div class="f4 dark-gray pa4 pointer">Introduction</div>
+		<nav class="flex flex-column">
+			{% block navigation %}
+			<a href="/" class="f4 link dark-gray pa4">Introduction</a>
+			{% endblock %}
 		</nav>
 	</div>
 	<div class="main">
 		<main class="paper mw8 bg-white ml-auto mr-auto h-100 bl br">
-			<p class="mt0 pa2 f4">At Samvadini, we devellop typing tools for scientific, prose and poetry writing. These tools support multilingual typing and editing.<br>
+			{% block main %}
+			<p class="mt0 pa2 f4">At \(\mathcal{Lekhan}\), we devellop writing tools for scientific, prose and poetry writing. These tools support multilingual typing and editing.<br>
 				<br>
-				Visit: <i>Paper</i> for<br>
-				<br>
-				<a href="/paper/scientific/4" class="blue no-underline">Scientific</a> document<br>
-				<a href="/paper/prose" class="blue no-underline">Prose</a>, or<br>
-				<a href="/paper/poetry" class="blue no-underline">Poetry</a>
-				document<br>
+				Visit: App
+				<ul>
+					<li><a href="/scientific/edit" class="f3 blue no-underline">Scientific</a></li>
+					<li><a href="/prose" class="f3 blue no-underline">Prose</a><span class="f3">, or</span></li>
+					<li><a href="/poetry" class="f3 blue no-underline">Poetry</a></li>
 			</p>
+			{% endblock %}
 		</main>
 	</div>
 </div>
